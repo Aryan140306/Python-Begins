@@ -1,0 +1,43 @@
+n=int(input('enter no.'))
+if n<=1:
+    print('not a prime number')
+elif n==2:
+    print('prime number')
+else:
+    for i in range(2,n):
+        if n%i==0:
+            print('not a prime number')
+            break
+    else:
+         print('prime number')   
+for num in range(2, n + 1):  # check each number from 2 to n
+    for i in range(2, num):
+        if num % i == 0:
+            break
+    else:
+        print(num, end=" ")
+    
+
+import math
+
+def is_prime(num):
+    if num < 2:
+        return False
+    for i in range(2, int(math.sqrt(num)) + 1):
+        if num % i == 0:
+            return False
+    return True
+
+n = int(input("Enter how many prime numbers you want: "))
+
+count = 0      # how many primes found
+num = 2        # start checking from 2
+
+while count < n:
+    if is_prime(num):
+        print(num, end=" ")
+        count += 1
+    num += 1
+
+
+    
