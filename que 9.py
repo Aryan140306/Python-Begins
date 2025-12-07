@@ -1,36 +1,39 @@
-def process_file(filename):
-    try:
-        with open(filename, "r") as f:
-            lines = f.readlines()
-    except FileNotFoundError:
-        print("File not found!")
-        return
+import math
 
-    # (a) Total number of characters, words and lines
-    num_lines = len(lines)
-    num_chars = sum(len(line) for line in lines)
-    num_words = sum(len(line.split()) for line in lines)
+# ---- Read file ----
+fname = input("Enter file name: ")
+f = open(fname, "r")
+lines = f.readlines()
+f.close()
 
-    print("Total characters:", num_chars)
-    print("Total words:", num_words)
-    print("Total lines:", num_lines)
+# a) Count characters, words, lines
+text = "".join(lines)
+print("Total characters:", len(text))
+print("Total words     :", len(text.split()))
+print("Total lines     :", len(lines))
 
-    # (b) Frequency of each character
-    freq = {}
-    for line in lines:
-        for ch in line:
-            freq[ch] = freq.get(ch, 0) + 1
+# b) Character frequency (dictionary)
+freq = {}
+for ch in text:
+    freq[ch] = freq.get(ch, 0) + 1
+print("\nCharacter Frequencies:", freq)
 
-    print("\nCharacter frequencies:")
-    for ch, count in freq.items():
-        print(repr(ch), ":", count)
+# c) Print words in reverse order
+words = text.split()
+print("\nWords in reverse order:")
+print(words[::-1])
 
-    # (c) Print words in reverse order
-    words = []
-    for line in lines:
-        words.extend(line.split())
-    print("\nWords in reverse order:")
-    print(" ".join(words[::-1]))
+# d) Copy odd and even lines to files
+f1 = open("File1.txt", "w")   # even lines
+f2 = open("File2.txt", "w")   # odd lines
 
-    # (d) Copy even and odd lines into different files
-    with open("File1.txt", "w") as f1, o
+for i, line in enumerate(lines, start=1):
+    if i % 2 == 0:
+        f1.write(line)
+    else:
+        f2.write(line)
+
+f1.close()
+f2.close()
+print("\nEven lines copied to File1.txt")
+print("Odd  lines copied to File2.txt")
