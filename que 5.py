@@ -1,33 +1,25 @@
+# Taking the string from the user
 s = input("Enter a string: ")
 
-print("\nChoose an operation:")
-print("a. Find the frequency of a character in a string.")
-print("b. Replace a character by another character in a string.")
-print("c. Remove the first occurrence of a character from a string.")
-print("d. Remove all occurrences of a character from a string.")
+# a. Frequency of a character
+ch = input("Enter a character to find its frequency: ")
+print("Frequency of", ch, "=", s.count(ch))
 
-choice = input("\nEnter your choice (a/b/c/d): ")
 
-if choice == 'a':
-    ch = input("Enter the character to find frequency: ")
-    freq = s.count(ch)
-    print(f"Frequency of '{ch}' in \"{s}\" is:", freq)
+# b. Replace a character with another
+old = input("Enter the character to replace: ")
+new = input("Enter the new character: ")
+new_string = s.replace(old, new)
+print("String after replacement:", new_string)
 
-elif choice == 'b':
-    old = input("Enter the character to replace: ")
-    new = input("Enter the new character: ")
-    result = s.replace(old, new, 1)  # replace first occurrence
-    print("String after replacement:", result)
 
-elif choice == 'c':
-    ch = input("Enter the character to remove (first occurrence): ")
-    result = s.replace(ch, "", 1)  # only first occurrence removed
-    print("String after removing first occurrence:", result)
+# c. Remove first occurrence of a character
+char_remove_first = input("Enter a character to remove first occurrence: ")
+result = s.replace(char_remove_first, "", 1)  # only first occurrence removed
+print("String after removing first occurrence:", result)
 
-elif choice == 'd':
-    ch = input("Enter the character to remove (all occurrences): ")
-    result = s.replace(ch, "")
-    print("String after removing all occurrences:", result)
 
-else:
-    print("Invalid choice!")
+# d. Remove all occurrences of a character
+char_remove_all = input("Enter a character to remove all occurrences: ")
+s_all_removed = s.replace(char_remove_all, "")
+print("After removing all occurrences:", s_all_removed)
