@@ -1,6 +1,9 @@
 
 
 
+class InvalidNameError(Exception):
+    pass
+
 def accept_name():
     try:
         name = input("Enter your name: ")
@@ -11,4 +14,9 @@ def accept_name():
 
         print("Valid name entered:", name)
 
-  
+    except InvalidNameError as e:
+        print("Error:", e)
+
+# Call the function
+accept_name()
+
